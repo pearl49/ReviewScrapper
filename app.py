@@ -1,3 +1,4 @@
+# review-ineuron.herokuapp.com
 from flask import Flask, render_template, request,jsonify
 from flask_cors import CORS,cross_origin
 import requests
@@ -30,6 +31,7 @@ def index():
             prodRes.encoding='utf-8'
             prod_html = bs(prodRes.text, "html.parser")
             print(prod_html)
+            # Newer version
             commentboxes = prod_html.find_all('div', {'class': "_16PBlm"})
 
             filename = searchString + ".csv"
@@ -79,5 +81,5 @@ def index():
         return render_template('index.html')
 
 if __name__ == "__main__":
-    #app.run(host='127.0.0.1', port=8001, debug=True)
-	app.run(debug=True)
+    app.run(host='127.0.0.1', port=8001, debug=True)
+	# app.run(debug=True)
